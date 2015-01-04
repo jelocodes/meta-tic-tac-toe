@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>Meta Tic-Tac-Toe</title>
+	<style>
+		*, *:before, *:after {
+	  		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	 	}
+
+	 	body {
+	 		font-family: "Helvetica", "Arial", sans-serif;
+	 	}
+
+	 	.container {
+	 		/*width: 540px;
+	 		margin: 30px auto;*/
+	 		overflow: hidden;
+	 		width:1000px;
+	 		margin:0 auto;
+	 	}
+
+	 	h1 {
+	 		text-align: center;
+	 		font-size: 50px;
+	 	}
+
+	 	p.player {
+	 		float: left;
+	 		width: 200px;
+	 		margin: 30px 0 0 30px;
+	 		font-size: 20px;
+	 	}
+
+	 	button {
+	 		font-size: 20px;
+	 		padding: 10px;
+	 		border: none;
+			background: #d12026;
+			color: #fff;
+			cursor: pointer;
+			float: right;
+			margin-top: 20px;
+			width:157px;
+	 	}
+		button:hover {
+			color: #222;
+		}
+
+		.grid {
+			width: 300px;
+			padding: 15px;
+			overflow: hidden;
+			border-radius: 5px;
+			background: #222;
+			float:left;
+			margin:10px;
+			height:300px;
+		}
+
+		.square {
+			width: 66px;
+			height: 65px;
+			float: left;
+			border-radius: 50%;
+			margin: 12px;
+			font-size: 67px;
+			/*text-align: center;*/
+			line-height: 65px;
+			color: #d12026;
+			background: #fff;
+			cursor: pointer;
+			transition: all 0.3s;
+			padding-left:5px;
+		}
+
+		.square:hover {
+			/*//background: linear-gradient(135deg, #d6f9ff 0%,#9ee8fa 100%); */
+			transform: scale(1.05);
+		}
+
+		.bigGrid {
+			box-sizing:border-box;
+			width:1000px;
+			margin:0 auto;
+		}
+
+		.red {
+			background:rgb(209,32,38);
+		}
+
+	</style>
+<style type="text/css"></style></head>
+<body>
+	<div class="container">
+		<h1>Meta Tic-Tac-Toe</h1>
+		<div class="bigGrid">
+			<div class="grid 1" id="grid">
+			<div class="1 square inactive 1">X</div>
+			<div class="2 square inactive 1"></div>
+			<div class="3 square inactive 1">O</div>
+			<div class="4 square inactive 1">X</div>
+			<div class="5 square inactive 1">X</div>
+			<div class="6 square inactive 1">O</div>
+			<div class="7 square inactive 1">O</div>
+			<div class="8 square inactive 1"></div>
+			<div class="9 square inactive 1">X</div>
+			</div>
+			<div class="grid 2" id="ii">
+			<div class="1 square inactive 2">X</div>
+			<div class="2 square inactive 2"></div>
+			<div class="3 square inactive 2">O</div>
+			<div class="4 square inactive 2">X</div>
+			<div class="5 square inactive 2">X</div>
+			<div class="6 square inactive 2">O</div>
+			<div class="7 square inactive 2">O</div>
+			<div class="8 square inactive 2"></div>
+			<div class="9 square inactive 2">X</div>
+			</div>
+			<div class="grid 3" id="iii">
+			<div class="1 square inactive 3">X</div>
+			<div class="2 square inactive 3"></div>
+			<div class="3 square inactive 3">O</div>
+			<div class="4 square inactive 3">X</div>
+			<div class="5 square inactive 3">X</div>
+			<div class="6 square inactive 3">O</div>
+			<div class="7 square inactive 3">O</div>
+			<div class="8 square inactive 3"></div>
+			<div class="9 square inactive 3">X</div>
+			</div>
+			<div class="grid 4" id="iv">
+			<div class="1 square inactive 4">X</div>
+			<div class="2 square inactive 4"></div>
+			<div class="3 square inactive 4">O</div>
+			<div class="4 square inactive 4">X</div>
+			<div class="5 square inactive 4">X</div>
+			<div class="6 square inactive 4">O</div>
+			<div class="7 square inactive 4">O</div>
+			<div class="8 square inactive 4"></div>
+			<div class="9 square inactive 4">X</div>
+			</div>
+			<div class="grid 5" id="v">
+			<div class="1 square inactive 5">X</div>
+			<div class="2 square inactive 5"></div>
+			<div class="3 square inactive 5">O</div>
+			<div class="4 square inactive 5">X</div>
+			<div class="5 square inactive 5">X</div>
+			<div class="6 square inactive 5">O</div>
+			<div class="7 square inactive 5">O</div>
+			<div class="8 square inactive 5"></div>
+			<div class="9 square inactive 5">X</div>
+			</div>
+			<div class="grid 6" id="vi">
+			<div class="1 square inactive 6">X</div>
+			<div class="2 square inactive 6"></div>
+			<div class="3 square inactive 6">O</div>
+			<div class="4 square inactive 6">X</div>
+			<div class="5 square inactive 6">X</div>
+			<div class="6 square inactive 6">O</div>
+			<div class="7 square inactive 6">O</div>
+			<div class="8 square inactive 6"></div>
+			<div class="9 square inactive 6">X</div>
+			</div>
+			<div class="grid 7" id="vii">
+			<div class="1 square inactive 7">X</div>
+			<div class="2 square inactive 7"></div>
+			<div class="3 square inactive 7">O</div>
+			<div class="4 square inactive 7">X</div>
+			<div class="5 square inactive 7">X</div>
+			<div class="6 square inactive 7">O</div>
+			<div class="7 square inactive 7">O</div>
+			<div class="8 square inactive 7"></div>
+			<div class="9 square inactive 7">X</div>
+			</div>
+			<div class="grid 8" id="viii">
+			<div class="1 square inactive 8">X</div>
+			<div class="2 square inactive 8"></div>
+			<div class="3 square inactive 8">O</div>
+			<div class="4 square inactive 8">X</div>
+			<div class="5 square inactive 8">X</div>
+			<div class="6 square inactive 8">O</div>
+			<div class="7 square inactive 8">O</div>
+			<div class="8 square inactive 8"></div>
+			<div class="9 square inactive 8">X</div>
+			</div>
+			<div class="grid 9" id="ix">
+			<div class="1 inactive square 9">X</div>
+			<div class="2 inactive square 9"></div>
+			<div class="3 inactive square 9">O</div>
+			<div class="4 inactive square 9">X</div>
+			<div class="5 inactive square 9">X</div>
+			<div class="6 inactive square 9">O</div>
+			<div class="7 inactive square 9">O</div>
+			<div class="8 inactive square 9"></div>
+			<div class="9 inactive square 9">X</div>
+			</div>
+		</div>
+		<p class="player"><span>X</span>'s turn to play.</p>
+		<button class="clear">New Game</button>
+	</div>
+	<script src="./Tic Tac Toe Game_files/jquery.min.js"></script>
+	<script>
+		var ticTacToeApp = {};
+
+		ticTacToeApp.currentPlayer = "X";
+
+		ticTacToeApp.init = function() {
+			ticTacToeApp.$squares = $('.bigGrid').find('.square');
+			ticTacToeApp.$playerLabel = $('.player span');
+			ticTacToeApp.$squares.on('click', function(){
+				ticTacToeApp.placeMarker($(this));
+			});
+
+		  $('.clear').on('click', function(){
+		    ticTacToeApp.clearBoard();
+		  });
+		}
+
+		ticTacToeApp.placeMarker = function($square){
+			//don't do anything if the square is already taken
+			if ($square.hasClass('inactive')){
+				return;
+			}
+		  // puts an X or an O on the board
+		  // and marks the square as unavailable
+		  // also marks all other squares as unavailable save the ones corresponding to user input
+	
+			$square.html(ticTacToeApp.currentPlayer).addClass('inactive');
+			ticTacToeApp.$squares.addClass('inactive');
+			var myClass = $square.html(ticTacToeApp.currentPlayer).attr("class");
+			var classSpecific = myClass.slice(0,1);
+			$('.'+classSpecific).removeClass('inactive');
+			$('.grid').not('.'+classSpecific).removeClass('red');
+			$('.grid.'+classSpecific).addClass('red');
+
+		  // switch who's turn it is
+		  ticTacToeApp.switchPlayer();
+
+		  // and check to see if anyone won
+		  ticTacToeApp.checkForWin($square);
+		}
+
+		ticTacToeApp.switchPlayer = function(){
+			// check to see who the current player is
+			// and switch to the opposite one
+		  if (ticTacToeApp.currentPlayer == "X") {
+		  	ticTacToeApp.currentPlayer = "O";
+		  } else {
+		  	ticTacToeApp.currentPlayer = "X";
+		  }
+
+		  //also update the player playerLabel
+		  ticTacToeApp.$playerLabel.html(ticTacToeApp.currentPlayer);
+		}
+
+		ticTacToeApp.clearBoard = function(){
+		  ticTacToeApp.$squares.html("").removeClass('inactive');
+		}
+
+		ticTacToeApp.checkForWin = function(){
+		  //checks to see if there is a row of three anywhere
+		  var moves = [];
+		  var movesMade = 0;
+
+		  ticTacToeApp.$squares.each(function(){
+		  	if ($(this).html() == "X") {
+		  		moves.push(1);
+		  		movesMade ++;
+		  	} else if ($(this).html() == "O"){
+		  		moves.push(-1);
+		  		movesMade ++;
+		  	} else {
+		  		moves.push(0);
+		  	}
+		  });
+
+		  var wins = [
+		  	//rows
+		  	moves[0] + moves[1] + moves[2],
+		  	moves[3] + moves[4] + moves[5],
+		  	moves[6] + moves[7] + moves[8],
+		  	moves[9] + moves[10] + moves[11],
+		  	moves[12] + moves[13] + moves[14],
+		  	moves[15] + moves[16] + moves[17],
+		  	moves[18] + moves[19] + moves[20],
+		  	moves[21] + moves[22] + moves[23],
+		  	moves[24] + moves[25] + moves[26],
+		  	moves[27] + moves[28] + moves[29],
+		  	moves[30] + moves[31] + moves[32],
+		  	moves[33] + moves[34] + moves[35],
+		  	moves[36] + moves[37] + moves[38],
+		  	moves[39] + moves[40] + moves[41],
+		  	moves[42] + moves[43] + moves[44],
+		  	moves[45] + moves[46] + moves[47],
+		  	moves[48] + moves[49] + moves[50],
+		  	moves[51] + moves[52] + moves[53],
+		  	moves[54] + moves[55] + moves[56],
+		  	moves[57] + moves[58] + moves[59],
+		  	moves[60] + moves[61] + moves[62],
+		  	moves[63] + moves[64] + moves[65],
+		  	moves[66] + moves[67] + moves[68],
+		  	moves[69] + moves[70] + moves[71],
+		  	moves[72] + moves[73] + moves[74],
+		  	moves[75] + moves[76] + moves[77],
+		  	moves[78] + moves[79] + moves[80],
+		  	//cols
+		  	moves[0] + moves[3] + moves[6],
+		  	moves[1] + moves[4] + moves[7],
+		  	moves[2] + moves[5] + moves[8],
+		  	moves[9] + moves[12] + moves[15],
+		  	moves[10] + moves[13] + moves[16],
+		  	moves[11] + moves[14] + moves[17],
+		  	moves[18] + moves[21] + moves[24],
+		  	moves[19] + moves[22] + moves[25],
+		  	moves[20] + moves[23] + moves[26],
+		  	moves[27] + moves[30] + moves[33],
+		  	moves[28] + moves[31] + moves[34],
+		  	moves[29] + moves[32] + moves[35],
+		  	moves[36] + moves[39] + moves[42],
+		  	moves[37] + moves[40] + moves[43],
+		  	moves[38] + moves[41] + moves[44],
+		  	moves[45] + moves[48] + moves[51],
+		  	moves[46] + moves[49] + moves[52],
+		  	moves[47] + moves[50] + moves[53],
+		  	moves[54] + moves[57] + moves[60],
+		  	moves[55] + moves[58] + moves[61],
+		  	moves[56] + moves[59] + moves[62],
+		  	moves[63] + moves[66] + moves[69],
+		  	moves[64] + moves[67] + moves[70],
+		  	moves[65] + moves[68] + moves[71],
+		  	moves[72] + moves[75] + moves[78],
+		  	moves[73] + moves[76] + moves[79],
+		  	moves[74] + moves[77] + moves[80],
+		  	//diagonals
+		  	moves[0] + moves[4] + moves[8],
+		  	moves[2] + moves[4] + moves[6],
+		  	moves[9] + moves[13] + moves[17],
+		  	moves[11] + moves[13] + moves[15],
+		  	moves[18] + moves[22] + moves[26],
+		  	moves[20] + moves[22] + moves[24],
+		  	moves[27] + moves[31] + moves[35],
+		  	moves[29] + moves[31] + moves[33],
+		  	moves[36] + moves[40] + moves[44],
+		  	moves[38] + moves[40] + moves[42],
+		  	moves[45] + moves[49] + moves[53],
+		  	moves[47] + moves[49] + moves[51],
+		  	moves[54] + moves[58] + moves[62],
+		  	moves[56] + moves[58] + moves[60],
+		  	moves[63] + moves[67] + moves[71],
+		  	moves[65] + moves[67] + moves[69],
+		  	moves[72] + moves[76] + moves[80],
+		  	moves[74] + moves[76] + moves[78],
+
+		  ];
+
+		  if (wins.indexOf(3) >= 0) {
+		  	alert("X wins!");
+		  	ticTacToeApp.$squares.addClass('inactive');
+		  } else if (wins.indexOf(-3) >= 0){
+		  	alert("O wins!");
+		  	ticTacToeApp.$squares.addClass('inactive');
+		  } else if (movesMade == 81){
+		  	alert("Game over! It's a draw.");
+		  }
+		}
+
+
+		$(function(){
+			ticTacToeApp.init();
+		});
+
+	</script>
+
+</body></html>
