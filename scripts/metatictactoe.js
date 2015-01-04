@@ -29,3 +29,20 @@ ticTacToeApp.placeMarker = function($square){
   // check for win
   ticTacToeApp.checkForWin($square);
 }
+
+ticTacToeApp.switchPlayer = function(){
+	// checks which player's turn it is  and switches
+  if (ticTacToeApp.currentPlayer == "X") {
+  	ticTacToeApp.currentPlayer = "O";
+  } else {
+  	ticTacToeApp.currentPlayer = "X";
+  }
+
+  //playerLabel update
+  ticTacToeApp.$playerLabel.html(ticTacToeApp.currentPlayer);
+}
+
+  //clears board when button is pressed
+ticTacToeApp.clearBoard = function(){
+  ticTacToeApp.$squares.html("").removeClass('inactive');
+}
