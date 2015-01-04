@@ -14,3 +14,18 @@ ticTacToeApp.init = function() {
     ticTacToeApp.clearBoard();
   });
 }
+
+ticTacToeApp.placeMarker = function($square){
+	//prohibit marker placement if square's already taken
+	if ($square.hasClass('inactive')){
+		return;
+	}
+  // puts an X or an O on the board and prohibits square from being re-used
+	$square.html(ticTacToeApp.currentPlayer).addClass('inactive');
+
+  // player switch
+  ticTacToeApp.switchPlayer();
+
+  // check for win
+  ticTacToeApp.checkForWin($square);
+}
