@@ -1,0 +1,70 @@
+
+		*, *:before, *:after {
+	  		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+	 	}
+
+	 	body {
+	 		font-family: "Helvetica", "Arial", sans-serif;
+	 	}
+
+	 	.container {
+	 		width: 540px;
+	 		margin: 30px auto;
+	 		overflow: hidden;
+	 	}
+
+	 	h1 {
+	 		text-align: center;
+	 		font-size: 50px;
+	 	}
+
+	 	p.player {
+	 		float: left;
+	 		width: 200px;
+	 		margin: 30px 0 0 30px;
+	 		font-size: 20px;
+	 	}
+
+	 	button {
+	 		font-size: 20px;
+	 		padding: 10px;
+	 		border: none;
+			background: #d12026;
+			color: #fff;
+			cursor: pointer;
+			float: right;
+			margin-top: 20px;
+	 	}
+		button:hover {
+			color: #222;
+		}
+
+		.grid {
+			width: 540px;
+			padding: 15px;
+			overflow: hidden;
+			border-radius: 5px;
+			background: #222;
+		}
+
+		.square {
+			width: 150px;
+			height: 150px;
+			float: left;
+			border-radius: 50%;
+			margin: 10px;
+			font-size: 100px;
+			text-align: center;
+			line-height: 150px;
+			color: #d12026;
+			background: #fff;
+			cursor: pointer;
+			transition: all 0.3s;
+		}
+
+		.square:hover {
+			/*//background: linear-gradient(135deg, #d6f9ff 0%,#9ee8fa 100%); */
+			transform: scale(1.05);
+		}
+
+	
