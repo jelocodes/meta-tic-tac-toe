@@ -81,14 +81,16 @@ var wins = [
 if (wins.indexOf(3) >= 0) {
 	alert("X wins!");
 	ticTacToeApp.$squares.addClass('inactive');
-} else if (wins.indexOf(-3) >= 0){
+   } else if (wins.indexOf(-3) >= 0){
 	alert("O wins!");
 	ticTacToeApp.$squares.addClass('inactive');
-} else if (movesMade == 9){
+   } else if (movesMade == 9){
 	alert("Game over! It's a draw.");
-		   }
+	}
 
 
-		  $(function(){
-		  	ticTacToeApp.init();
-		  });
+
+$(function(){
+
+ticTacToeApp.init();
+});
