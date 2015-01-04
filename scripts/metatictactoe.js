@@ -38,7 +38,7 @@ ticTacToeApp.switchPlayer = function(){
   	ticTacToeApp.currentPlayer = "X";
   }
 
-  //playerLabel update
+  //updates playerLabel 
   ticTacToeApp.$playerLabel.html(ticTacToeApp.currentPlayer);
 }
 
@@ -46,3 +46,49 @@ ticTacToeApp.switchPlayer = function(){
 ticTacToeApp.clearBoard = function(){
   ticTacToeApp.$squares.html("").removeClass('inactive');
 }
+
+ticTacToeApp.checkForWin = function(){
+		  //checks to see if there is a row of three anywhere on the grid
+		  var moves = [];
+		  var movesMade = 0;
+
+		  ticTacToeApp.$squares.each(function(){
+		  	if ($(this).html() == "X") {
+		  		moves.push(1);
+		  		movesMade ++;
+		  	} else if ($(this).html() == "O"){
+		  		moves.push(-1);
+		  		movesMade ++;
+		  	} else {
+		  		moves.push(0);
+		  	}
+		  });
+
+var wins = [
+		  //rows
+		  moves[0] + moves[1] + moves[2],
+		  moves[3] + moves[4] + moves[5],
+		  moves[6] + moves[7] + moves[8],
+		  //cols
+		  moves[0] + moves[3] + moves[6],
+		  moves[1] + moves[4] + moves[7],
+		  moves[2] + moves[5] + moves[8],
+		  //diagonals
+		  moves[0] + moves[4] + moves[8],
+		  moves[2] + moves[4] + moves[6]
+		 ];
+
+if (wins.indexOf(3) >= 0) {
+	alert("X wins!");
+	ticTacToeApp.$squares.addClass('inactive');
+} else if (wins.indexOf(-3) >= 0){
+	alert("O wins!");
+	ticTacToeApp.$squares.addClass('inactive');
+} else if (movesMade == 9){
+	alert("Game over! It's a draw.");
+		   }
+
+
+		  $(function(){
+		  	ticTacToeApp.init();
+		  });
