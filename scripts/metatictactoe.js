@@ -3,8 +3,8 @@ var ticTacToeApp = {};
 ticTacToeApp.currentPlayer = "X";
 
 ticTacToeApp.init = function() {
-	ticTacToeApp.$squares = $('#grid').find('.square');
-	ticTacToeApp.$playerLabel = $('.player span')
+	ticTacToeApp.$squares = $('.bigGrid').find('.square');
+	ticTacToeApp.$playerLabel = $('.player span');
 
 	ticTacToeApp.$squares.on('click', function(){
 		ticTacToeApp.placeMarker($(this));
@@ -154,6 +154,7 @@ if (wins.indexOf(3) >= 0) {
    } else if (movesMade == 81){
 	alert("Game over! It's a draw.");
 	}
+}
 
 $(function(){
 
