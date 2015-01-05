@@ -5,13 +5,13 @@ ticTacToeApp.currentPlayer = "X";
 ticTacToeApp.init = function() {
 	ticTacToeApp.$squares = $('.bigGrid').find('.square');
 	ticTacToeApp.$playerLabel = $('.player span');
-
 	ticTacToeApp.$squares.on('click', function(){
 		ticTacToeApp.placeMarker($(this));
 	});
 
   $('.clear').on('click', function(){
     ticTacToeApp.clearBoard();
+    $('.grid').removeClass('red');
   });
 }
 
@@ -24,6 +24,11 @@ ticTacToeApp.placeMarker = function($square){
   // also marks all other squares as unavailable save the one corresponding to user input
 	$square.html(ticTacToeApp.currentPlayer).addClass('inactive');
 	ticTacToeApp.$squares.addClass('inactive');
+	var myClass = $square.html(ticTacToeApp.currentPlayer).attr("class");
+	var classSpecific = myClass.slice(0,1);
+	$('.'+classSpecific).removeClass('inactive');
+	$('.grid').not('.'+classSpecific).removeClass('red');
+	$('.grid.'+classSpecific).addClass('red');
 
   // player switch
   ticTacToeApp.switchPlayer();
@@ -147,12 +152,15 @@ var wins = [
 
 if (wins.indexOf(3) >= 0) {
 	alert("X wins!");
+	$('.grid').removeClass('red');
 	ticTacToeApp.$squares.addClass('inactive');
    } else if (wins.indexOf(-3) >= 0){
 	alert("O wins!");
+	$('.grid').removeClass('red');
 	ticTacToeApp.$squares.addClass('inactive');
    } else if (movesMade == 81){
 	alert("Game over! It's a draw.");
+	$('.grid').removeClass('red');
 	}
 }
 
