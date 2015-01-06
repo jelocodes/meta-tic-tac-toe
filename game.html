@@ -7,8 +7,16 @@
 	<body>
 		<div class="container">
 			<h1>Meta Tic-Tac-Toe</h1>
+			<button class="rules">Rules</button>
+			<div class="rulesText hide">
+			<p>Just like regular Tic-Tac-Toe, three in a row wins. In this case though, you have 9 different 3x3 game boards and thus 9 different places where you can win.</p>
+			<p>The game starts with Player X placing a marker on one of the circles on one of the game boards.</p>
+			<p>Each of the 9 circles on each game board corresponds to the positions of the 9 game boards oriented on the big 3x3 grid. Where a player places their marker limits where the next player can place their marker. Placing a marker on the top-left circle of a game board for example, means that on the next turn, the opposing player will have to place their marker somewhere on the top-left game board. Likewise, placing a marker in the middle circle of one of the game boards forces the next player to play on the middle game board. Be creative and think ahead when making your moves, trying to get a row of three, but also trying to block your opponent's potential wins by picking a location that benefits you.</p>
+			<p>Except for the first turn, in which X can play anywhere, the red game board is the active/playable one.</p>
+			<p>Have fun!</p> 
+			</div>
 			<div class="bigGrid">
-				<div class="grid 1" id="grid">
+<div class="grid 1" id="grid">
 				<div class="1 square inactive 1">X</div>
 				<div class="2 square inactive 1"></div>
 				<div class="3 square inactive 1">O</div>
